@@ -23,13 +23,14 @@ Use
         "honor",
         "oneplus",
         "asus",
-        "samsung"
+        "samsung",
+        "huawei"
     ];
     try {
         if (device.platform == "Android") {
             phones.map(
                 phone =>
-                    phone == device.manufacturer.toLowerCase() ? AutoStartPermissionPlugin.openAutostartPermissionPopup() : console.log("not detected");
+                    phone == device.manufacturer.toLowerCase() ? AutostartPermission.openAutostartPermissionPopup() : console.log("not detected");
                     );
                 }
     } catch (e) {
@@ -38,7 +39,7 @@ Use
     
 Open autostart permission window
 
-    autoStartPermissionPlugin.openAutostartPermissionPopup();
+    AutostartPermission.openAutostartPermissionPopup();
 
 Works with:
 
@@ -51,3 +52,4 @@ Works with:
  -  Huawei
  -  Asus
  -  Samsung
+ -  Huawei
