@@ -6,7 +6,7 @@
 
 Install the plugin
 
-    $ cordova plugin add https://github.com/SaniokUA/cordova-plugin-autostart-permission-setting.git
+    $ cordova plugin add https://github.com/cpascal-gr/cordova-plugin-autostart-permission-setting.git
 
 Improt  plugin
 
