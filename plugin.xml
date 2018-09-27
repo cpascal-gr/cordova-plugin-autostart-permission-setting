@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns="https://github.com/SaniokUA/cordova-plugin-autostart-permission-setting"
+<plugin xmlns="https://github.com/cpascal-gr/cordova-plugin-autostart-permission-setting"
         id="cordova-plugin-autostart-permission-setting"
         version="1.0.0">
 
