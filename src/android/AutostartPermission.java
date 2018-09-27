@@ -27,9 +27,9 @@ public class AutostartPermission extends CordovaPlugin {
             return true;
         } if (action.equals("hasAutostartPermissionPopup")) {
 
-            return hasAutoStartupPermissionPopup();
+            return callbackContext.success(hasAutoStartupPermissionPopup());
 
-            //return true;
+            return true;
         } else {
             return false;
         }
@@ -101,7 +101,8 @@ public class AutostartPermission extends CordovaPlugin {
                 return false;
             }
         } catch (Exception e) {
-            Log.e("exc" , String.valueOf(e));
+            return false;
+            //Log.e("exc" , String.valueOf(e));
         }
     }
     
