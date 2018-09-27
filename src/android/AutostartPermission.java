@@ -25,6 +25,11 @@ public class AutostartPermission extends CordovaPlugin {
             showAutoStartupPermissionPopup();
 
             return true;
+        } if (action.equals("hasAutostartPermissionPopup")) {
+
+            return hasAutoStartupPermissionPopup();
+
+            //return true;
         } else {
             return false;
         }
@@ -62,4 +67,42 @@ public class AutostartPermission extends CordovaPlugin {
             Log.e("exc" , String.valueOf(e));
         }
     }
+    
+     public boolean hasAutoStartupPermissionPopup() {
+        try {
+            Intent intent = new Intent();
+            String manufacturer = android.os.Build.MANUFACTURER;
+            if ("xiaomi".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.miui.securitycenter", "com.miui.permcenter.autostart.AutoStartManagementActivity"));
+            } else if ("oppo".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.coloros.safecenter", "com.coloros.safecenter.permission.startup.StartupAppListActivity"));
+            } else if ("vivo".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.vivo.permissionmanager", "com.vivo.permissionmanager.activity.BgStartUpManagerActivity"));
+            } else if ("Letv".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.letv.android.letvsafe", "com.letv.android.letvsafe.AutobootManageActivity"));
+            } else if ("Honor".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.optimize.process.ProtectActivity"));
+            } else if("oneplus".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.oneplus.security", "com.oneplus.security.chainlaunch.view.ChainLaunchAppListAct‌​ivity"));
+            } else if("asus".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.asus.mobilemanager", "com.asus.mobilemanager.entry.FunctionActivity")).setData(android.net.Uri.parse("mobilemanager://function/entry/AutoStart"));
+            } else if("samsung".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.samsung.android.lool", "com.samsung.android.sm.ui.battery.BatteryActivity"));
+            } else if("huawei".equalsIgnoreCase(manufacturer)) {
+                intent.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.appcontrol.activity.StartupAppControlActivity"));
+            } else {
+                return false;
+            }
+
+            List<ResolveInfo> list = cordova.getActivity().getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            if  (list.size() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            Log.e("exc" , String.valueOf(e));
+        }
+    }
+    
 }
