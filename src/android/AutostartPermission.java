@@ -27,7 +27,7 @@ public class AutostartPermission extends CordovaPlugin {
             return true;
         } if (action.equals("hasAutostartPermissionPopup")) {
 
-            return callbackContext.success(hasAutoStartupPermissionPopup());
+            callbackContext.success(hasAutoStartupPermissionPopup());
 
             return true;
         } else {
