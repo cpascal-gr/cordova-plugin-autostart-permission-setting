@@ -67,8 +67,8 @@ public class AutostartPermission extends CordovaPlugin {
             Log.e("exc" , String.valueOf(e));
         }
     }
-    
-     public boolean hasAutoStartupPermissionPopup() {
+
+     public int hasAutoStartupPermissionPopup() {
         try {
             Intent intent = new Intent();
             String manufacturer = android.os.Build.MANUFACTURER;
@@ -91,19 +91,19 @@ public class AutostartPermission extends CordovaPlugin {
             } else if("huawei".equalsIgnoreCase(manufacturer)) {
                 intent.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.appcontrol.activity.StartupAppControlActivity"));
             } else {
-                return false;
+                return 0;
             }
 
             List<ResolveInfo> list = cordova.getActivity().getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
             if  (list.size() > 0) {
-                return true;
+                return 1;
             } else {
-                return false;
+                return 0;
             }
         } catch (Exception e) {
-            return false;
+            return 0;
             //Log.e("exc" , String.valueOf(e));
         }
     }
-    
+
 }
